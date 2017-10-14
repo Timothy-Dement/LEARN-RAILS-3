@@ -1,0 +1,79 @@
+<%= provide(:title, 'Users') %>
+
+<h2>Superadmins</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Created</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.sort_by { |user| user.name }.each do |user| %>
+      <% if user.superadmin? %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.created_at %></td>
+          <td><%= user.updated_at %></td>
+          <td><%= link_to 'VIEW', user_path(user) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Admins</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Created</th>
+    <th>Updated</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.sort_by { |user| user.name }.each do |user| %>
+      <% if !user.superadmin? && user.admin? %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.created_at %></td>
+            <td><%= user.updated_at %></td>
+            <td><%= link_to 'VIEW', user_path(user) %></td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<h2>Customers</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Created</th>
+    <th>Updated</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.sort_by { |user| user.name }.each do |user| %>
+      <% if !user.superadmin? && !user.admin? %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.created_at %></td>
+            <td><%= user.updated_at %></td>
+            <td><%= link_to 'VIEW', user_path(user) %></td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

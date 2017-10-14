@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Example One
+  email: one@example.com
+  password_digest: password_one
+  is_admin?: false
+  is_superadmin?: false
+  can_reserve?: false
+
+two:
+  name: Example Two
+  email: two@example.com
+  password_digest: password_two
+  is_admin?: false
+  is_superadmin?: false
+  can_reserve?: false
